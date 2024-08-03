@@ -24,13 +24,11 @@ const register = async (req, res, next) => {
     const userCreated = await User.create({ username, email, phone, password });
     await userCreated.save();
 
-    res
-      .status(201)
-      .json({
-        message: "registration successful",
-        token: await userCreated.generateToken(),
-        userId: userCreated._id.toString(),
-      });
+    res.status(201).json({
+      message: "registration successful",
+      token: await userCreated.generateToken(),
+      userId: userCreated._id.toString(),
+    });
   } catch (err) {
     const status = 500;
     const message = "Internal server error";
