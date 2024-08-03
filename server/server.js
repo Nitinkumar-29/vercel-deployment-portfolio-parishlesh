@@ -25,6 +25,10 @@ app.use("/api/data", serviceRoute);
 
 app.use("/api/admin", adminRoute);
 
+app.get("/",()=>{
+    res.json("Hello world")
+})
+
 const PORT = 5000;
 
 connectDb().then(() => {
